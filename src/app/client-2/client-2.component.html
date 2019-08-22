@@ -1,0 +1,19 @@
+<h4>
+	Client 2 - Tractors</h4>
+
+<app-my-selector [options]="tractors">
+
+	<ng-template #selectedTemplate let-tractor>
+		{{ tractor?.name || 'Tractor' }}
+	</ng-template>
+
+	<ng-template #optionTemplate let-tractor let-id=index>
+		<div>
+			<div><b>{{tractor.name}}</b></div>
+			<img height="100" width="150" src="{{tractor.img}}" >
+      <span *ngFor="let i of [].constructor(tractor.stars)">  &#x2B50;</span>
+      <button class="btn btn-danger" style="width:100%" > Buy Now!</button>
+	  </div>
+  </ng-template>
+
+</app-my-selector>
