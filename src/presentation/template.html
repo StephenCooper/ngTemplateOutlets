@@ -1,0 +1,194 @@
+<!-- Slide 7-->
+<div dropdown>
+    <button dropdownToggle>
+        {{selected || 'Select'}}
+    </button>
+    <ul *dropdownMenu>
+        <li *ngFor="let option of options" (click)="selectOption(option)">
+            <a>{{option}}</a>
+        </li>
+    </ul>
+</div>
+
+<app-selector [options]="sharks">
+</app-selector>
+
+<!-- Slide 8-->
+<li *ngFor="let option of options">
+    <a>{{displayFunc(option)}}</a>
+</li>
+
+
+<app-selector [options]="sharks" [displayFunc]="appendLatin">
+</app-selector>
+
+
+<!--Slide 10-->
+<a class="dropdown-item">
+    <my-icon *ngIf="swimIcon(option)" name="{{swimIcon(option)}}"/>
+    {{displayFunc(option)}}
+</a>
+
+<app-selector [options]="sharks" [swimIcon]="getSwimIcon">
+</app-selector>
+
+<!--Slide 15-->
+<a class="dropdown-item">
+    <my-icon *ngIf="swimIcon(option)" name="{{swimIcon(option)}}"/>
+    {{displayFunc(option)}}
+</a>
+
+
+<!--Slide 16-->
+<li *ngFor="let option of options">
+    <a class="dropdown-item">
+        <ng-content></ng-content>
+        {{displayFunc(option)}}
+    </a>
+</li>
+
+<div dropdown>
+    <button dropdownToggle>
+        <my-icon *ngIf="swimIcon(selected)" name="{{swimIcon(selected)}}"/>
+        {{selectedDisplayFunc(selected) || label}}
+    </button>
+    <ul *dropdownMenu>
+        <li *ngFor="let option of options" (click)="selectOption(option)">
+            <a class="dropdown-item">
+                <my-icon *ngIf="swimIcon(option)" name="{{swimIcon(option)}}"/>
+                {{displayFunc(option)}}
+            </a>
+        </li>
+    </ul>
+</div>
+
+<button dropdownToggle>
+    <ng-content></ng-content>
+    {{selectedDisplayFunc(selected) || label}}
+</button>
+
+<app-selector [options]="sharks" [displayFunc]="sharkDisplay">
+    <my-icon *ngIf="selectedShark" name="{{ getSwimIcon(selectedShark) }}"/>
+</app-selector>
+
+<!-- Slide 19-->
+<ng-template #myTemplate>
+    <p class="blue">My Template</p>
+</ng-template>
+
+<div class="orange">
+    <ng-container [ngTemplateOutlet]="myTemplate">
+    </ng-container>
+</div>
+
+<!--slide 25-->
+<ng-template #sharkTemplate let-shark>
+
+    {{ appendLatin(shark) }}
+
+</ng-template>
+
+<!--Slide 30-->
+<ng-template #optionTemplate let-shark>
+    <my-icon name="{{ getSwimIcon(shark) }}" />
+    {{ shark }}
+</ng-template>
+
+<a class="dropdown-item">
+        <ng-container 
+        [ngTemplateOutlet]="optionTemplateRef"
+        [ngTemplateOutletContext]="{ $implicit: option}">
+            </ng-container>
+</a>
+
+<button dropdownToggle>
+
+    <ng-container *ngIf="!selectedTemplateRef"> {{selected || label}} </ng-container>
+
+    <ng-container *ngIf="selectedTemplateRef">
+        <ng-template [ngTemplateOutlet]="selectedTemplateRef" [ngTemplateOutletContext]="{ $implicit: selected }">
+        </ng-template>
+    </ng-container>
+
+</button>
+
+<ng-template #selectedSharkTemplate let-shark>
+    <my-icon *ngIf="shark" name="{{ isSwimSafe(shark) }}"/>
+    {{ shark || 'Shark' }}
+</ng-template>
+
+<app-selector [options]="sharks" [selectedTemplate]="selectedSharkTemplate">
+    </app-elector>
+
+    <!--   <li *ngFor="let option of options; index as i" (click)="selectOption(option)">
+        
+          <ng-container *ngIf="!optionTemplateRef">  {{ option }} </ng-container>
+  
+          <ng-container *ngIf="optionTemplateRef">
+              <ng-template 
+              [ngTemplateOutlet]="optionTemplateRef" 
+              [ngTemplateOutletContext]="{ $implicit: option, index: i}"></ng-template>
+          </ng-container>
+        
+      </li>    -->
+
+    <ng-template #sharkTemplate let-shark let-id=index>
+        <div [style.color]="id % 2 == 0 ? 'black' : 'blue'">
+            <my-icon *ngIf="shark" name="{{ isSwimSafe(shark) }}"/>
+            {{ sharkDisplay(shark) }}
+        </div>
+    </ng-template>
+
+    <app-selector [options]="sharks" [optionTemplate]="sharkTemplate">
+    </app-selector>
+
+    <div dropdown>
+        <button dropdownToggle>
+
+            <ng-container *ngIf="!selectedTemplateRef"> {{selected || label}} </ng-container>
+
+            <ng-container *ngIf="selectedTemplateRef">
+                <ng-template [ngTemplateOutlet]="selectedTemplateRef"
+                    [ngTemplateOutletContext]="{ $implicit: selected }"></ng-template>
+            </ng-container>
+        </button>
+        <ul *dropdownMenu>
+            <li *ngFor="let option of options; index as i" (click)="selectOption(option)">
+                <a class="dropdown-item">
+                    <ng-container *ngIf="!optionTemplateRef"> {{ option }} </ng-container>
+
+                    <ng-container *ngIf="optionTemplateRef">
+                        <ng-template [ngTemplateOutlet]="optionTemplateRef"
+                            [ngTemplateOutletContext]="{ $implicit: option, index: i}"></ng-template>
+                    </ng-container>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <app-selector [options]="sharks">
+
+        <ng-template #selectedTemplate let-shark>
+            <my-icon *ngIf="shark" name="{{ getSwimIcon(shark) }}"/>
+            {{ shark || 'Shark' }}
+        </ng-template>
+
+        <ng-template #optionTemplate let-shark let-id=index>
+            <div [style.color]="id % 2 == 0 ? 'black' : 'blue'">
+                <my-icon *ngIf="shark" name="{{ isSwimSafe(shark) }}"/>
+                {{ sharkDisplay(shark) }}
+            </div>
+        </ng-template>
+
+    </app-selector>
+
+    <ng-template #sharedTemplate let-selection>
+        <my-icon *ngIf="selection" name="{{ isSwimSafe(selection) }}"/>
+        {{ selection || 'Select...' }}
+    </ng-template>
+
+    <app-selector [options]="sharks" [selectedTemplate]="sharedTemplate" (selectionChanged)="selectedShark = $event">
+    </app-selector>
+
+    <app-selector [options]="whales" [selectedTemplate]="sharedTemplate" (selectionChanged)="selectedWhale = $event">
+    </app-selector>
