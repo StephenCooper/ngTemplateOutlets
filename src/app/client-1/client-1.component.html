@@ -1,18 +1,21 @@
 <h4>
-	Client 1 - Sharks</h4>
+  Client 1 - Sharks
+</h4>
 
-<app-my-selector [label]="'Sharks'" [options]="sharks" (selectionChanged)="selectedShark = $event">
+<app-my-selector
+  [label]="'Sharks'"
+  [options]="sharks"
+  (selectionChanged)="selectedShark = $event"
+>
+  <ng-template #selectedTemplate let-shark>
+    <fa *ngIf="shark" name="{{ getSwimIcon(shark) }}"></fa>
+    {{ shark?.name || "Shark" }}
+  </ng-template>
 
-	<ng-template #selectedTemplate let-shark>
-		<fa *ngIf="shark" name="{{ getSwimIcon(shark) }}"></fa>
-		{{ shark?.name || 'Shark' }}
-	</ng-template>
-
-	<ng-template #optionTemplate let-shark let-id=index>
-		<a class="dropdown-item" [style.color]="id % 2 == 0 ? 'black' : 'blue'">
-			<fa *ngIf="shark" name="{{ getSwimIcon(shark) }}"></fa>
-			{{ sharkDisplay(shark) }}
-		</a>
-	</ng-template>
-
+  <ng-template #optionTemplate let-shark let-id="index">
+    <a class="dropdown-item" [style.color]="id % 2 == 0 ? 'black' : 'blue'">
+      <fa *ngIf="shark" name="{{ getSwimIcon(shark) }}"></fa>
+      {{ sharkDisplay(shark) }}
+    </a>
+  </ng-template>
 </app-my-selector>

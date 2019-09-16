@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   // Two clients sharing a select component but using different templates.
+
+  function appendLatin(shark){
+    const latin = this.latinNames[shark];  
+    return `${shark} (${latin})` ;
+  }
 }
