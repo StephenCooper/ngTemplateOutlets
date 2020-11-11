@@ -1,5 +1,11 @@
 {
-  "name": "angular",
+  "name": "ngtemplateoutlets",
+  "author": "Stephen Cooper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StephenCooper/ngTemplateOutlets.git"
+  },
+  "homepage": "https://ngtemplateoutletcontext.stackblitz.io",
   "version": "0.0.0",
   "private": true,
   "dependencies": {
