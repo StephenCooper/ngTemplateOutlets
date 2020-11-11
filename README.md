@@ -6,6 +6,6 @@ Live Demo: [StackBlitz](https://stackblitz.com/edit/ngtemplateoutletcontext)
 
 Demo Code for Angular Connect 2019 talk
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2SnVxPeJdwE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![ngTemplateOutlet: The secret to customisation](https://img.youtube.com/vi/2SnVxPeJdwE/0.jpg))](https://www.youtube.com/watch?v=2SnVxPeJdwE)
 
 
