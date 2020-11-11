@@ -1,15 +1,25 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: "my-app",
+  template: `
+    <app-client-1></app-client-1>
+    <app-client-2></app-client-2>
+  `,
+  styles: [
+    `
+      :host {
+        display: grid;
+        grid-template-columns: auto auto;
+      }
+
+      app-client-1,
+      app-client-2 {
+        margin: 1rem;
+      }
+    `,
+  ],
 })
 export class AppComponent {
   // Two clients sharing a select component but using different templates.
-
-  function appendLatin(shark){
-    const latin = this.latinNames[shark];  
-    return `${shark} (${latin})` ;
-  }
 }

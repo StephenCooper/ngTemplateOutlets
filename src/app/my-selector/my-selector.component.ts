@@ -4,21 +4,20 @@ import {
   EventEmitter,
   Input,
   Output,
-  TemplateRef
+  TemplateRef,
 } from "@angular/core";
 
 @Component({
   selector: "app-my-selector",
   templateUrl: "./my-selector.component.html",
-  styleUrls: ["./my-selector.component.css"]
 })
-export class MySelectorComponent {
-  picked: string;
+export class MySelectorComponent<T extends { name: string }> {
+  picked: T;
 
   @Input()
   label: string;
   @Input()
-  options: string[];
+  options: T[];
 
   @ContentChild("selectedTemplate", { static: false })
   selectedTemplateRef: TemplateRef<any>;
@@ -27,9 +26,9 @@ export class MySelectorComponent {
   optionTemplateRef: TemplateRef<any>;
 
   @Output()
-  selectionChanged = new EventEmitter<string>();
+  selectionChanged = new EventEmitter<T>();
 
-  selectOption(option: string) {
+  selectOption(option: T) {
     this.picked = option;
     this.selectionChanged.emit(option);
   }
