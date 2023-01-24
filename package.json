@@ -9,14 +9,14 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.1.0",
-    "@angular/common": "^14.1.0",
-    "@angular/compiler": "^14.1.0",
-    "@angular/core": "^14.1.0",
-    "@angular/forms": "^14.1.0",
-    "@angular/platform-browser": "^14.1.0",
-    "@angular/platform-browser-dynamic": "^14.1.0",
-    "@angular/router": "^14.1.0",
+    "@angular/animations": "^15.1.1",
+    "@angular/common": "^15.1.1",
+    "@angular/compiler": "^15.1.1",
+    "@angular/core": "^15.1.1",
+    "@angular/forms": "^15.1.1",
+    "@angular/platform-browser": "^15.1.1",
+    "@angular/platform-browser-dynamic": "^15.1.1",
+    "@angular/router": "^15.1.1",
     "@fortawesome/angular-fontawesome": "^0.11.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
@@ -35,10 +35,10 @@
     "update": "ng add @fortawesome/angular-fontawesome"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.1.0",
-    "@angular/cli": "^14.1.0",
-    "@angular/compiler-cli": "^14.1.0",
-    "@angular/language-service": "^14.1.0",
+    "@angular-devkit/build-angular": "^15.1.2",
+    "@angular/cli": "^15.1.2",
+    "@angular/compiler-cli": "^15.1.1",
+    "@angular/language-service": "^15.1.1",
     "@types/node": "~14.14.7",
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "~2.0.3",
@@ -53,6 +53,6 @@
     "protractor": "~7.0.0",
     "ts-node": "~9.0.0",
     "tslint": "~6.1.3",
-    "typescript": "~4.6.4"
+    "typescript": "~4.9.4"
   }
 }
