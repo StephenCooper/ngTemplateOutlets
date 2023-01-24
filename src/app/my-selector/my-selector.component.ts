@@ -12,18 +12,18 @@ import {
   templateUrl: "./my-selector.component.html",
 })
 export class MySelectorComponent<T extends { name: string }> {
-  picked: T;
+  picked: T | undefined;
 
   @Input()
-  label: string;
+  label: string | undefined;
   @Input()
-  options: T[];
+  options: T[] | undefined;
 
   @ContentChild("selectedTemplate", { static: false })
-  selectedTemplateRef: TemplateRef<any>;
+  selectedTemplateRef: TemplateRef<any> | undefined;
 
   @ContentChild("optionTemplate", { static: false })
-  optionTemplateRef: TemplateRef<any>;
+  optionTemplateRef: TemplateRef<any> | undefined;
 
   @Output()
   selectionChanged = new EventEmitter<T>();
