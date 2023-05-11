@@ -3,11 +3,11 @@
 </h4>
 
 <app-my-selector [options]="tractors">
-  <ng-template #selectedTemplate let-tractor>
+  <ng-template selectedTemplate let-tractor>
     {{ tractor?.name || "Tractor" }}
   </ng-template>
 
-  <ng-template #optionTemplate let-tractor let-id="index">
+  <ng-template optionTemplate let-tractor let-id="index">
     <div>
       <div>
         <b>{{ tractor.name }}</b>

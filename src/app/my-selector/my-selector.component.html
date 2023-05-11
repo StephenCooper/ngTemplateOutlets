@@ -27,7 +27,7 @@
       <ng-container
         *ngIf="optionTemplateRef"
         [ngTemplateOutlet]="optionTemplateRef"
-        [ngTemplateOutletContext]="{ $implicit: option, index: i }"
+        [ngTemplateOutletContext]="{ $implicit: option, index: i, optionTemplate: option }"
       >
       </ng-container>
     </li>
