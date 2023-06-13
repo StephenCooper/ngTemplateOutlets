@@ -7,7 +7,7 @@
     <ng-container
       *ngIf="selectedTemplateRef"
       [ngTemplateOutlet]="selectedTemplateRef"
-      [ngTemplateOutletContext]="{ $implicit: picked }"
+      [ngTemplateOutletContext]="{ $implicit: picked, selected: picked }"
     >
     </ng-container>
     <span class="caret"></span>
@@ -27,7 +27,7 @@
       <ng-container
         *ngIf="optionTemplateRef"
         [ngTemplateOutlet]="optionTemplateRef"
-        [ngTemplateOutletContext]="{ $implicit: option, index: i }"
+        [ngTemplateOutletContext]="{ $implicit: option, index: i, options: option }"
       >
       </ng-container>
     </li>

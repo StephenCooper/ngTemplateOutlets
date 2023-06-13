@@ -7,12 +7,13 @@
   [options]="sharks"
   (selectionChanged)="selectedShark = $event"
 >
-  <ng-template #selectedTemplate let-shark>
+  <ng-template [selected]="sharks" let-shark>
     <fa-icon *ngIf="shark" [icon]="getSwimIcon(shark)"></fa-icon>
     {{ shark?.name || "Shark" }}
   </ng-template>
 
-  <ng-template #optionTemplate let-shark let-id="index">
+  <!-- [options]="sharks" Input used to infer typing as optionTemplate is Generic. See Client 2 for alternative syntax -->
+  <ng-template [options]="sharks" let-shark let-id="index">
     <a class="dropdown-item" [style.color]="id % 2 == 0 ? 'black' : 'blue'">
       <fa-icon *ngIf="shark" [icon]="getSwimIcon(shark)"></fa-icon>
       {{ sharkDisplay(shark) }}

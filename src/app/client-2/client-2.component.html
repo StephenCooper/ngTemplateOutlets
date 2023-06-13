@@ -3,11 +3,12 @@
 </h4>
 
 <app-my-selector [options]="tractors">
-  <ng-template #selectedTemplate let-tractor>
-    {{ tractor?.name || "Tractor" }}
-  </ng-template>
+  <!-- Using structural syntax to pass input for typings. -->
+  <ng-container *selected="tractors as tractor">
+    {{ tractor?.name || "Tractor" }} {{ tractor?.stars }}
+  </ng-container>
 
-  <ng-template #optionTemplate let-tractor let-id="index">
+  <ng-container *options="tractors as tractor; index as id">
     <div>
       <div>
         <b>{{ tractor.name }}</b>
@@ -16,5 +17,5 @@
       <span *ngFor="let i of [].constructor(tractor.stars)"> &#x2B50;</span>
       <button class="btn btn-danger" style="width:100%">Buy Now!</button>
     </div>
-  </ng-template>
+  </ng-container>
 </app-my-selector>
