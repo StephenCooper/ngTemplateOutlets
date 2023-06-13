@@ -1,0 +1,20 @@
+<div class="app-selector btn-group" dropdown>
+  <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+    {{ picked?.name || label }}
+    <span class="caret"></span>
+  </button>
+
+  <ul *dropdownMenu class="dropdown-menu">
+    <li *ngFor="let option of options; index as i" (click)="selectOption(option)">
+      <ng-container *ngIf="!optionTemplateRef">
+        <a class="dropdown-item">
+          {{ option?.name || option }}
+        </a>
+      </ng-container>
+
+      <ng-container *ngIf="optionTemplateRef" [ngTemplateOutlet]="optionTemplateRef"
+        [ngTemplateOutletContext]="{ $implicit: option, index: i }">
+      </ng-container>
+    </li>
+  </ul>
+</div>

@@ -7,6 +7,8 @@ import { Client1Component } from "./client-1/client-1.component";
 import { Client2Component } from "./client-2/client-2.component";
 import { MySelectorComponent, OptionDirective, SelectedDirective } from "./my-selector/my-selector.component";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { MySimpleSelectorComponent, SimpleOptionDirective } from "./my-simple-selector/my-simple-selector.component";
+import { Client3Component } from "./client-3/client-3.component";
 
 @NgModule({
   imports: [
@@ -20,8 +22,11 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
     MySelectorComponent,
     Client1Component,
     Client2Component,
+    Client3Component,
     SelectedDirective,
-    OptionDirective
+    OptionDirective,
+    MySimpleSelectorComponent,
+    SimpleOptionDirective
   ],
   bootstrap: [AppComponent],
 })

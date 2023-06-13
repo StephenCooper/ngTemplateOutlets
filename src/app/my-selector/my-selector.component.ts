@@ -9,15 +9,19 @@ import {
 } from "@angular/core";
 
 interface SelectedContext<T> {
-  $implicit: T;
+  // $implicit value for let-option support
+  $implicit: T | undefined;
+  // Required to support *selected syntax as that does not use $implicit
+  selected: T | undefined;
 }
 
 @Directive({
-  selector: 'ng-template[selectedTemplate]',
+  selector: 'ng-template[selected]',
 })
 export class SelectedDirective<T> {
 
   @Input()
+  selected!: T[] | '';
 
   static ngTemplateContextGuard<TContext>(
     dir: SelectedDirective<TContext>,
@@ -25,20 +29,25 @@ export class SelectedDirective<T> {
   ): ctx is SelectedContext<TContext> {
     return true;
   }
-
 }
 
 interface OptionContext<T> {
+  // $implicit value for let-option support
   $implicit: T;
   index: number;
-  optionTemplate: T;
+  // Required to support *options syntax as that does not use $implicit
+  options: T;
 }
 
 @Directive({
-  selector: 'ng-template[optionTemplate]',
+  selector: '[options]',
 })
 export class OptionDirective<T> {
 
+  // If you also want to support users not passing generic array you may
+  // need to support the '' for typing so that this directive can be used as
+  // <ng-template options let-shark>
+  // when the user is not passing the list of options
   @Input()
   options!: T[];
 
@@ -48,7 +57,6 @@ export class OptionDirective<T> {
   ): ctx is OptionContext<TContext> {
     return true;
   }
-
 }
 
 @Component({
@@ -56,7 +64,7 @@ export class OptionDirective<T> {
   templateUrl: "./my-selector.component.html",
 })
 export class MySelectorComponent<T extends { name: string }> {
-  picked: T | undefined;
+  picked: T | undefined = undefined;
 
   @Input()
   label: string | undefined;
@@ -64,7 +72,7 @@ export class MySelectorComponent<T extends { name: string }> {
   options: T[] | undefined;
 
   @ContentChild(SelectedDirective<T>, { read: TemplateRef })
-  selectedTemplateRef: TemplateRef<unknown> | undefined;
+  selectedTemplateRef: TemplateRef<SelectedContext<T>> | undefined;
 
   @ContentChild(OptionDirective<T>, { read: TemplateRef })
   optionTemplateRef: TemplateRef<OptionContext<T>> | undefined;

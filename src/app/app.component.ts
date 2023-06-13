@@ -5,6 +5,7 @@ import { Component } from "@angular/core";
   template: `
     <app-client-1></app-client-1>
     <app-client-2></app-client-2>
+    <app-client-3></app-client-3>
   `,
   styles: [
     `
@@ -14,7 +15,8 @@ import { Component } from "@angular/core";
       }
 
       app-client-1,
-      app-client-2 {
+      app-client-2,
+      app-client-3 {
         margin: 1rem;
       }
     `,

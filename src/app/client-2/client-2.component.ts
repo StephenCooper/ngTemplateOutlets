@@ -1,11 +1,18 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+
+
+interface Tractor {
+  name: string;
+  stars: number;
+  img: string;
+}
 
 @Component({
   selector: "app-client-2",
   templateUrl: "./client-2.component.html",
 })
 export class Client2Component {
-  tractors = [
+  tractors: Tractor[] = [
     {
       name: "New Holland T7",
       stars: 3,

@@ -38,7 +38,7 @@ export class Client1Component {
     },
   ];
   safeSharks = ["Angular roughshark", "Pyjama"];
-  selectedShark: Shark = {} as Shark;
+  selectedShark: Shark | undefined = undefined;
 
   sharkDisplay = (shark: Shark) => {
     return `${shark.name} (${shark.latinName})`;
